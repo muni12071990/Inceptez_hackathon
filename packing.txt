@@ -1,0 +1,39 @@
+FAT JAR:
+spark-submit --class hackathon.mainObject --master spark://localhost:7077 --deploy-mode cluster \
+/home/hduser/Hackathon/Hackathon.jar \
+hdfs://127.0.0.1:54310/user/hduser/hackathon/insuranceinfo1.csv hdfs://127.0.0.1:54310/user/hduser/hackathon/insuranceinfo2.csv \
+hackathon insureRDDMerged_DF_Spl_char_removed hdfs://127.0.0.1:54310/user/hduser/hackathon/custs_states.csv \
+"thrift://127.0.0.1:9083" "hdfs://127.0.0.1:54310/user/hive/warehouse" \
+--queue default \
+--driver-memory 512m \
+--executor-cores 1 \
+--executor-memory 512m \
+--spark-shuffle-compress true \
+--spark-speculation true \
+--spark-dynamicAllocation-enabled true \
+--spark-dynamicAllocation-initialExecutors 1 \
+--spark-dynamicAllocation-minExecutors 1 \
+--spark-dynamicAllocation-maxExecutors 4 \
+--spark-dynamicAllocation-executorIdleTimeout 30s \
+--conf spark.shuffle.service.enabled true \
+--conf spark.sql.shuffle.partitions=4
+
+LEAN JAR:
+spark-submit --jars /home/hduser/install/mysql-connector-java.jar --class hackathon.mainObject --master spark://localhost:7077 --deploy-mode cluster \
+/home/hduser/Hackathon/datalake-0.0.1-SNAPSHOT.jar \
+hdfs://127.0.0.1:54310/user/hduser/hackathon/insuranceinfo1.csv hdfs://127.0.0.1:54310/user/hduser/hackathon/insuranceinfo2.csv \
+hackathon insureRDDMerged_DF_Spl_char_removed hdfs://127.0.0.1:54310/user/hduser/hackathon/custs_states.csv \
+"thrift://127.0.0.1:9083" "hdfs://127.0.0.1:54310/user/hive/warehouse" \
+--queue default \
+--driver-memory 512m \
+--executor-cores 1 \
+--executor-memory 512m \
+--spark-shuffle-compress true \
+--spark-speculation true \
+--spark-dynamicAllocation-enabled true \
+--spark-dynamicAllocation-initialExecutors 1 \
+--spark-dynamicAllocation-minExecutors 1 \
+--spark-dynamicAllocation-maxExecutors 4 \
+--spark-dynamicAllocation-executorIdleTimeout 30s \
+--conf spark.shuffle.service.enabled true \
+--conf spark.sql.shuffle.partitions=4

@@ -1,0 +1,21 @@
+driver=com.mysql.cj.jdbc.Driver
+host=localhost
+port=3306
+user=root
+password=Root123$
+dbtype=jdbc:mysql://
+hdfsuri=hdfs://localhost:54310
+sparklog=file:///tmp/spark-events
+hivemetastore=thrift://127.0.0.1:9083
+sqlwarehouse=hdfs://127.0.0.1:50070/user/hive/warehouse
+esnode=127.0.0.1
+esport=9200
+Seconds_time=10
+#should be comma separated in properties file
+kafkatopics=hackathon_streaming_female,hackathon_streaming_male
+zookeeperservers=127.0.0.1:9092
+groupid=Hackathon
+offset=latest
+
+
+
